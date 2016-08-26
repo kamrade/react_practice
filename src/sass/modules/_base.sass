@@ -13,7 +13,107 @@ body
 	font-smoothing: antialiased
 	-webkit-font-smoothing: antialiased
 
-
 	.catch-of-the-day
 		margin 0 auto
+
+#main
+	height: 100vh
+	position: relative
+	z-index: 0
+
+.store-selector-wrapper
+	position: relative
+	z-index: 0
+	top: 50%
+	transform: translateY(-50%)
+
+.store-selector
+	box-sizing: border-box
+	display: block
+	position: reative
+
+	margin: auto
+	width: 75%
+	max-width: 460px
+	padding: 32px
+
+	border-radius: 8px
+	background-color: #1ED59E
+	box-shadow: 0 0 24px rgba(#555, .2), 0 0 4px rgba(#333, .4)
+
+	h2
+		text-align: center
+		font-size: 32px
+		margin-bottom: 48px
+		text-transform: uppercase
+		font-weight: 300
+		color: white
+
+	input
+		display: block
+		border: none
+		background-color: white
+		color: #777
+		box-sizing: border-box
+		transition: all .3s ease
+
+		margin: 0 auto
+		width: 100%
+		height: 40px
+		padding: 0
+
+		text-align: center
+
+		&:visited
+			outline: none
+
+		&:invalid
+			outline: none
+			box-shadow: none
+			border: 2px solid red !important
+
+	input[type="text"]
+		border-bottom: 2px solid white
+		margin-bottom: 16px
+		font-size: 16px
+
+		&:focus
+			border-bottom: 2px solid #FDCB5A
+			outline: none
+			color: #333
+
+	input[type="submit"]
+		background-color: darken(#1ED59E, 15%)
+		color: white
+		border-radius: 4px
+		cursor: pointer
+		font-size: 16px
+
+		&:hover
+			background-color: darken(#1ED59E, 20%)
+
+%section
+	display: inline-block
+	box-sizing: border-box
+	vertical-align: top
+	background-color: white
+	border: 2px solid #777
+	border-right: none
+	padding: 16px
+	flex-grow: 1
+
+.catch-of-the-day
+	width: 90%
+	margin: 0 auto
+	display: flex
+
+	.header
+		@extend %section
+
+	.inventory
+		@extend %section
+		border-right: 2px solid #777
+	.order
+		@extend %section
+
 
