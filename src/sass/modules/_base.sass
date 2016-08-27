@@ -93,27 +93,29 @@ body
 			background-color: darken(#1ED59E, 20%)
 
 %section
-	display: inline-block
+	display: block
 	box-sizing: border-box
-	vertical-align: top
 	background-color: white
 	border: 2px solid #777
-	border-right: none
+	border-bottom: none
 	padding: 16px
-	flex-grow: 1
 
 .catch-of-the-day
 	width: 90%
 	margin: 0 auto
-	display: flex
 
 	.header
 		@extend %section
 
 	.inventory
 		@extend %section
-		border-right: 2px solid #777
+		border-bottom: 2px solid #777
+
 	.order
 		@extend %section
 
+	.list-of-fishes
+		@extend %section
 
+		li
+			list-style: none
