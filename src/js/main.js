@@ -7,7 +7,9 @@ var Route = ReactRouter.Router;
 // var Link = ReactRouter.Link;
 
 var Navigation = ReactRouter.Navigation;
+
 var History = ReactRouter.History;
+var browserHistory = ReactRouter.browserHistory;
 var createBrowserHistory = require('history/lib/createBrowserHistory');
 
 var h = require('./helpers');
@@ -229,7 +231,7 @@ var NotFound = React.createClass({
 	REACT ROUTES
 */
 var routes = (
-	<Router history={ createBrowserHistory() }>
+	<Router history={browserHistory}>
 		<Route path="/" component={StorePicker} />
 		<Route path="/store/:storeId" component={App} />
 		<Route path="*" component={NotFound} />
