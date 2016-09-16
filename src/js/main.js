@@ -1,14 +1,3 @@
-var $c_01 = '#4080ff',
-	$c_02 = '#1abc9c',
-	$c_03 = '#e2234c';
-
-var $c_white = '#fff',
-	$c_bg_light = '#f5f8fd',
-	$c_border_light = '#d8e1ea',
-	$c_text_light_01 = '#778796',
-	$c_bg_dark_selected = '#555e75',
-	$c_bg_dark_main = '#383f52';
-
 console.log( "D3 version: " + d3.version );
 console.log("Test");
 
@@ -18,15 +7,19 @@ var ReactDOM = require('react-dom')
 
 // Store picker component
 // This will let us make <StorePicker/>
-var StorePicker = React.createClass({
+var Component = React.createClass({
 
 	render: function(){
 		return (
-			<p>hello</p>
+			<div className="component">
+				<h1>This is my component</h1>
+				<h3>And small description to it</h3>
+				<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper.</p>
+			</div>
 		)
 	}
 
 });
 
 
-ReactDOM.render(<StorePicker/>, document.querySelector("#main"));
+ReactDOM.render(<Component/>, document.querySelector("#main"));
