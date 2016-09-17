@@ -8,7 +8,7 @@ let ReactDOM = require('react-dom')
 let App = React.createClass({
 	getInitialState: function(){
 		return{
-			text: '',
+			text: 'Hello World',
 			todos: [
 				{
 					id: 1,
@@ -26,37 +26,21 @@ let App = React.createClass({
 		};
 	},
 	render: function(){
+
 		return(
 			<div>
-				<TodoForm />
-				<TodoList todos={this.state.todos} />
+				<h1>{this.state.text}</h1>
+				<form>
+					<input type="text" onChange={this.changeText} value={this.state.text} />
+					<button className="btn brn-primary">Click Me</button>
+				</form>
 			</div>
 		);
+	},
+	changeText: function(e){
+		this.setState({text: e.target.value})
 	}
 });
 
-let TodoForm = React.createClass({
-	render: function(){
-		return(
-			<div>
-				TodoForm
-			</div>
-		);
-	}
-});
-
-let TodoList = React.createClass({
-	render: function(){
-		return(
-			<ul className="list-group">
-				{
-					this.props.todos.map(todo => {
-						return <li className="list-group-item" todo={todo} key={todo.id} >{todo.name}</li>
-					})
-				}
-			</ul>
-		);
-	}
-});
 
 ReactDOM.render(<App />, document.querySelector("#app"));
