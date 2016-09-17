@@ -2,31 +2,13 @@
 let React = require('react');
 let ReactDOM = require('react-dom')
 
-
-
-
 let App = React.createClass({
 	getInitialState: function(){
-		return{
-			text: 'Hello World',
-			todos: [
-				{
-					id: 1,
-					name: "Meeting at work"
-				},
-				{
-					id: 2,
-					name: "Meeting at home"
-				},
-				{
-					id: 3,
-					name: "Go to space"
-				}
-			]
+		return {
+			text: "Hello World"
 		};
 	},
 	render: function(){
-
 		return(
 			<div>
 				<h1>{this.state.text}</h1>
@@ -34,6 +16,8 @@ let App = React.createClass({
 					<input type="text" onChange={this.changeText} value={this.state.text} />
 					<button className="btn brn-primary">Click Me</button>
 				</form>
+				<br/>
+				<ComponentTwo name={this.state.text} />
 			</div>
 		);
 	},
@@ -42,5 +26,14 @@ let App = React.createClass({
 	}
 });
 
+let ComponentTwo = React.createClass({
+	render: function(){
+		return (
+			<div>
+				{this.props.name}
+			</div>
+		);
+	}
+});
 
 ReactDOM.render(<App />, document.querySelector("#app"));
