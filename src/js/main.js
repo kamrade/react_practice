@@ -26,13 +26,26 @@ var App = React.createClass({
 		return(
 			<div>
 				<TodoForm onTodoAdd={this.handleTodoAdd}/>
-				<TodoList todos={this.state.todos}/>
+				<TodoList
+					todos={this.state.todos}
+					deleteTodo={this.handleTodoDelete}
+				/>
 			</div>
 		);
 	},
+	handleTodoDelete: function(todo){
+		var todos = this.state.todos;
+		for(var i = 0, l = todos.length; i < l; i++){
+			if(todos[i].id == todo.id){
+				todos.splice(i, 1);
+				break;
+			}
+		}
+		this.setState({todos: todos});
+	},
 	handleTodoAdd: function(text){
 		var newTodo = {
-			id: this.state.todos.length + 1,
+			id: this.state.todos.length + 1 + new Date().getTime(),
 			text: text
 		};
 		this.setState({todos: this.state.todos.concat(newTodo)});
@@ -71,17 +84,22 @@ var TodoForm = React.createClass({
 
 var TodoList = React.createClass({
 	render: function(){
+
 		return(
 			<ul className="list-group">
 				{
 					this.props.todos.map(todo => {
 						return <li className="list-group-item" todo={todo} key={todo.id}>
 							{todo.text}
+							<a className="delete" onClick={this.onDelete.bind(this, todo)} href="#">x</a>
 						</li>
 					})
 				}
 			</ul>
 		);
+	},
+	onDelete: function(todo){
+		this.props.deleteTodo(todo);
 	}
 });
 
