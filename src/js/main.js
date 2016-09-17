@@ -5,30 +5,58 @@ let ReactDOM = require('react-dom')
 
 
 
-let Jumbotron = React.createClass({
-	getDefaultProps : function() {
-		return {
-			title: "Hello Title!",
-			text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos ea ducimus natus labore velit aspernatur sunt ipsum explicabo libero, temporibus suscipit, cumque, quos accusantium. Corrupti tempora maxime, iure molestias recusandae."
+let App = React.createClass({
+	getInitialState: function(){
+		return{
+			text: '',
+			todos: [
+				{
+					id: 1,
+					name: "Meeting at work"
+				},
+				{
+					id: 2,
+					name: "Meeting at home"
+				},
+				{
+					id: 3,
+					name: "Go to space"
+				}
+			]
 		};
 	},
 	render: function(){
 		return(
 			<div>
-				<div className="jumbotron">
-					<h1>{this.props.title}</h1>
-					<p>{this.props.text}</p>
-					<p><a onClick={this.onClick.bind(this, 'Racoon', 'Fox')} href="#" className="btn btn-primary btn-lg" role="button">Learn More</a></p>
-				</div>
+				<TodoForm />
+				<TodoList todos={this.state.todos} />
 			</div>
 		);
-	},
-	onClick: function(beast1, beast2){
-		console.log("click " + beast1 + " | " + beast2);
 	}
 });
 
+let TodoForm = React.createClass({
+	render: function(){
+		return(
+			<div>
+				TodoForm
+			</div>
+		);
+	}
+});
 
+let TodoList = React.createClass({
+	render: function(){
+		return(
+			<ul className="list-group">
+				{
+					this.props.todos.map(todo => {
+						return <li className="list-group-item" todo={todo} key={todo.id} >{todo.name}</li>
+					})
+				}
+			</ul>
+		);
+	}
+});
 
-
-ReactDOM.render(<Jumbotron />, document.querySelector("#jumbotron"));
+ReactDOM.render(<App />, document.querySelector("#app"));
